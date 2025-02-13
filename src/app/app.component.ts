@@ -1,12 +1,14 @@
-import { Component } from '@angular/core'
-import { RouterOutlet } from '@angular/router'
+import { Component, VERSION } from '@angular/core'
+import { FormsModule } from '@angular/forms'
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'atpw-template-driven-form'
+  versionName = `Angular ${VERSION.major}`
+  types = ['major', 'minor', 'patch']
+  selectedType = ''
 }
