@@ -1,5 +1,6 @@
 {
   "name": "atpw-template-driven-form",
+  "author": "Marion Curtil",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

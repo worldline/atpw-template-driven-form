@@ -1,19 +1,20 @@
 <h1>Version form</h1>
-<form (ngSubmit)="submitForm(formRef)" #formRef="ngForm">
+<form (ngSubmit)="submitForm()">
   <label for="versionName">Version name:</label>
-  <input id="versionName" type="text" [(ngModel)]="versionName" required name="versionName" #nameRef="ngModel"/>
+  <input type="text"  id="versionName" [formControl]="versionNameControl" required />
 
   <label for="type">Type of version:</label>
-  <select id="type" [(ngModel)]="selectedType" name="type">
+  <select id="type" [formControl]="typeControl">
+    <option [value]=""></option>
     @for (type of types; track type) {
       <option [value]="type">{{ type }}</option>
     }
   </select>
 
-  <button type="submit" [disabled]="!formRef.valid">Submit</button>
+  <button type="submit" [disabled]="versionNameControl.invalid || typeControl.invalid">Submit</button>
 </form>
 
 <h2>Value and validity</h2>
-<p><strong>Form value:</strong> {{ versionName() }} - {{ selectedType() }}</p>
-<p><strong>Is version name input valid ?</strong> {{ nameRef.valid }}</p>
-<p><strong>Is form valid ?</strong> {{ formRef.valid }}</p>
+<p><strong>Form value:</strong> {{ versionNameControl.value }} - {{ typeControl.value }}</p>
+<p><strong>Is version name input valid ?</strong> {{ versionNameControl.valid }}</p>
+<p><strong>Is form valid ?</strong> {{ versionNameControl.valid && typeControl.valid }}</p>
