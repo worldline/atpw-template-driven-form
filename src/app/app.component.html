@@ -1,5 +1,5 @@
 <h1>Version form</h1>
-<form>
+<form (ngSubmit)="submitForm(formRef)" #formRef="ngForm">
   <label for="versionName">Version name:</label>
   <input id="versionName" type="text" [(ngModel)]="versionName" required name="versionName" #nameRef="ngModel"/>
 
@@ -9,8 +9,11 @@
       <option [value]="type">{{ type }}</option>
     }
   </select>
+
+  <button type="submit" [disabled]="!formRef.valid">Submit</button>
 </form>
 
 <h2>Value and validity</h2>
 <p><strong>Form value:</strong> {{ versionName() }} - {{ selectedType() }}</p>
 <p><strong>Is version name input valid ?</strong> {{ nameRef.valid }}</p>
+<p><strong>Is form valid ?</strong> {{ formRef.valid }}</p>
