@@ -1,4 +1,4 @@
-import { Component, VERSION } from '@angular/core'
+import { Component, model, VERSION } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 
 @Component({
@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms'
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  versionName = `Angular ${VERSION.major}`
-  types = ['major', 'minor', 'patch']
-  selectedType = ''
+  versionName = model(`Angular ${VERSION.major}`)
+  readonly types = ['major', 'minor', 'patch']
+  selectedType = model('')
 }
